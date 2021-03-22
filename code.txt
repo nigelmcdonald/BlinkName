@@ -1,0 +1,62 @@
+//This code will cause an LED connected to GPIO D7 to blink the word nigel in morse code.
+
+
+//GPIO pin
+int ledPin = D7;
+
+//time values
+int dit = 100;
+int da = 300;
+int intragap = 100;
+int charGap = 300;
+
+void setup() {
+
+  pinMode(ledPin, OUTPUT); // set D7 to output
+}
+
+//function to have the LED perform a Dit likedisplay
+void DoDit(){
+    digitalWrite(ledPin, HIGH);
+    delay(dit);
+    digitalWrite(ledPin, LOW);
+    delay(intragap);
+}
+
+//function to have the LED perform a Da like display
+void DoDa(){
+    digitalWrite(ledPin, HIGH);
+    delay(da);
+    digitalWrite(ledPin, LOW);
+    delay(intragap);
+}
+
+void loop() {
+  
+  //N
+  DoDa(); DoDit();
+  //Character Space
+  delay(charGap);
+  
+  //I
+  DoDit(); DoDit();
+  //Character Space
+  delay(charGap);
+  
+  //G
+  DoDa(); DoDa(); DoDit();
+  //Character Space
+  delay(charGap);
+  
+  //E
+  DoDit();
+  //Character Space
+  delay(charGap);
+  
+  //L
+  DoDit(); DoDa(); DoDit(); DoDit(); 
+
+  //wait five before repeat name
+  delay(5000);
+}
+
